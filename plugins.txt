@@ -41,8 +41,6 @@ github-branch-source
 github-issues
 github-oauth
 github-organization-folder
-github-pr-coverage-status
-github-pullrequest
 google-login
 gradle
 gravatar
@@ -66,8 +64,6 @@ metrics
 momentjs
 oauth-credentials
 oic-auth
-openid
-openid4java
 openshift-login
 pipeline-build-step
 pipeline-github-lib
