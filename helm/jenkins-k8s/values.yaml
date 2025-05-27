@@ -8,7 +8,7 @@ replicaCount: 1
 imagePullSecrets:
 image:
   repository: ashish1981/jenkins
-  tag: v0.0.1
+  tag: v0.0.3
   pullPolicy: Always
 
   resources:
