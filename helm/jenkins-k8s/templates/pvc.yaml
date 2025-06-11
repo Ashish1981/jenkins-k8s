@@ -16,7 +16,7 @@ spec:
       storage: {{ .Values.storage.capacity }}
 {{- if .Values.storage.persistence.storageClass }}
 {{- if (eq "-" .Values.storage.persistence.storageClass) }}
-  storageClassName: ""
+  storageClassName: "standard"
 {{- else }}
   storageClassName: "{{ .Values.storage.persistence.storageClass }}"
 {{- end }}

@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: jenkins
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2025-05-27T05:15:29Z"
+  labels:
+    app: jenkins-k8s
+    app.kubernetes.io/managed-by: Helm
+    chart: jenkins-k8s-0.1.1
+    heritage: Helm
+    release: jenkins
+  name: jenkins-jenkins-k8s
+  namespace: default
+  resourceVersion: "108319"
+  uid: 59f65e47-fe0c-4ce9-8c2f-84ee4767f20c
+spec:
+  clusterIP: 10.104.76.185
+  clusterIPs:
+  - 10.104.76.185
+  externalIPs:
+  - 9.46.87.242
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: jenkins-k8s
+    release: jenkins
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

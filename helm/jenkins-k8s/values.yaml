@@ -5,10 +5,11 @@
 initContainerImage: "alpine:3.10.2"
 
 replicaCount: 1
-imagePullSecrets:
+imagePullSecrets: dockercred
+# - name: dockercred
 image:
   repository: ashish1981/jenkins
-  tag: v0.0.3
+  tag: jdk17
   pullPolicy: Always
 
   resources:
@@ -30,11 +31,14 @@ master:
 service:
   name: jenkins-k8s
   type: LoadBalancer
+  # type: ClusterIP
   ## Whitelist the IPs that can access Jenkins
   loadBalancerSourceRanges:
   - 0.0.0.0/0
   externalPort: 8080
   internalPort: 8080
+  # externalIPs: 
+  # - 9.46.87.242
 ## Make sure the javaOps and resources are aligned to avoid conflicts
 javaOpts: "-Xms512m -Xmx1g"
 resources:
@@ -48,6 +52,7 @@ storage:
     enabled: true
     accessMode: ReadWriteOnce
   capacity: 10Gi
+  storageClassName: standard
 
 jnlp:
   service:

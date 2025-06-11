@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:jdk21
+FROM jenkins/jenkins:jdk17
 
 # Running as root to have an easy support for Docker
 USER root
@@ -25,6 +25,11 @@ RUN python3 -m pip install --upgrade pip cffi && \
     pip3 install ansible-core>=2.18.6 ansible>=11.6.0 ansible-lint==25.4.0 && \
     pip3 install mitogen jmespath && \
     pip install --upgrade pywinrm
+RUN ansible-galaxy collection install ibm.ibm_zos_core \
+    && ansible-galaxy collection install ibm.ibm_zhmc \
+    && ansible-galaxy collection install ibm.ibm_zos_cics \
+    && ansible-galaxy collection install ibm.ibm_zos_ims \
+    && ansible-galaxy collection install ibm.ibm_zosmf
 
 # Install Docker, kubectl and helm
 #RUN apt-get -qq update && \

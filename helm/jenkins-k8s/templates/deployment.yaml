@@ -22,6 +22,7 @@ spec:
     {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
       - name: {{ .Values.imagePullSecrets }}
+      # - name: {{ "dockercred" }}
     {{- end }}
       initContainers:
       - name: "prepare-storage"
@@ -79,6 +80,7 @@ spec:
     {{- if .Values.storage.persistence.enabled }}
         persistentVolumeClaim:
           claimName: {{ template "jenkins-k8s.name" . }}
+          storageClassName: standard
     {{- else }}
         emptyDir: {}
     {{- end }}
